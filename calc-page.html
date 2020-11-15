@@ -1,0 +1,104 @@
+     <!--<label><h1>Lenght</h1></label><br>-->
+
+              <label>Idler Diameter (mm)</label><input id="inptWidth" type="number"  placeholder="iddlerdia"  width="100%"> <label style="display: none;" id="lblResult"></label>
+             <!-- <label>Height</label>-->
+              <label>Operating Speed (m/min)</label><input id="inptSpeed"  type="number"  placeholder="oper speed"  width="100%"> <label  style="display: none;"  id="lblSpeed"></label><br>
+              <!-- <label>Height</label>-->
+              <label>Roller Width (mm)</label><input id="inptMaterial"  type="number"  placeholder="oper speed"  width="100%">
+              <!--<label><h1>Parameters</h1></label>
+              <select id="slctOpt">
+                  <option>Q3</option>
+                  <option>Q6</option>
+                  <option>Q9</option>
+              </select>-->
+              <button id="btnCalc" onclick="calc()">Calculate</button>
+              <!--<h1>Result</h1>-->
+              <button id="btnBuy" onclick="buy()">Buy</button><br><br>
+
+              <h1>Code</h1>
+              <h3 id="lblCode"></h3>
+              <style>
+                  #btnCalc{
+                      background: #000 !important;
+                      color: #fff !important;
+                      font-size: 31px !important;
+                      padding: 10px 29px !important;
+                      margin: 20px 0px 0px !important;
+                  }
+
+                  #btnBuy{
+                      background: #000 !important;
+                      color: #fff !important;
+                      font-size: 31px !important;
+                      padding: 10px 29px !important;
+                      margin: 20px 0px 0px !important;
+                  }
+
+
+                  #inptWidth, #inptMaterial, #inptSpeed{
+                      float: right;
+                      border: none;
+                      background: #efefef;
+                      padding: 9px;
+                      width: 100%;
+                      font-weight: 900;
+                      font-size: 23px;
+                  }
+
+                  #lblCode{
+                      padding: 23px;
+                      background: #f00;
+                      color: #fff;
+                      font-weight: 00;
+                      font-size: 26px;
+                  }
+
+              </style>
+
+              <script>
+
+                  var inptWidth=document.getElementById("inptWidth");
+                  var inptSpeed=document.getElementById("inptSpeed");
+                  var inptMaterial=document.getElementById("inptMaterial");
+                  var lblResult=document.getElementById("lblResult");
+                  var lblSpeed=document.getElementById("lblSpeed");
+                  var lblCode=document.getElementById("lblCode");
+                  var calcR;
+
+                  function buy(){
+                      window.location.href = "http://sharkadvantage.com/cart.php";
+                  }
+
+
+
+
+                  function calc(){
+                      console.log(inptWidth.value);
+
+                      if (inptSpeed.value < 50){
+                          lblSpeed.innerText="Q3";
+                      }
+                      else if(inptSpeed.value >= 50 && inptSpeed.value < 100 ){
+                          lblSpeed.innerText="Q6";
+                      }
+                      else if(inptSpeed.value >= 100 ){
+                          lblSpeed.innerText="Q9";
+                      }
+
+                      if(inptMaterial.value>=300) {
+                          calcR=inptWidth.value * 3.14;
+                          lblResult.innerText=calcR;
+                          lblCode.innerText="SA "+ calcR +" "+ lblSpeed.innerText+" " + (inptMaterial.value/2) + " X 2";
+                      }
+                      else
+                      {
+                          calcR=inptWidth.value * 3.14;
+                          lblResult.innerText=calcR;
+                          lblCode.innerText="SA "+ calcR +" " + lblSpeed.innerText+" " + inptMaterial.value;
+                      }
+
+
+                      /*lblCode.innerText="SA "+ calcR + lblSpeed.innerText ;*/
+                     /*lblCode.innerText=Math.floor(100000000 + Math.random() * 900000000);*/
+                  }
+              </script>
